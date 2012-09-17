@@ -285,7 +285,7 @@ $('#blah').addClass('klass')
 
 # No
 
-(($ '#blah).addClass 'klass').doThis 'withThat'
+(($ '#blah').addClass 'klass').doThis 'withThat'
 ```
 
 When calling functions with a single callback as the last parameter, omit parenthesis:
