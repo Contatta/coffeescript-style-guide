@@ -258,7 +258,6 @@ print inspect(value)
 return obj.value(10, 20) / obj.value(20, 10)
 
 obj = new Tag(new Value(a, b), new Arg(c))
-
 ```
 
 When calling functions, _only_ (and optionally) omit parenthesis if there is one and only one function call in the statement:
@@ -275,7 +274,6 @@ log.debug "A message"
 # No
 
 print inspect value
-
 ```
 
 When chaining function calls, _always_ use parenthesis rather than function grouping style:
@@ -288,7 +286,6 @@ $('#blah').addClass('klass')
 # No
 
 (($ '#blah).addClass 'klass').doThis 'withThat'
-
 ```
 
 When calling functions with a single callback as the last parameter, omit parenthesis:
@@ -300,7 +297,6 @@ obj.on 'connected', (err, result) ->
   
 db.connect 'user', 'password', (err, db) -?
   # use database
-
 ```
 
 <a name="strings"/>
