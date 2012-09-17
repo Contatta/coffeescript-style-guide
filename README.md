@@ -1,5 +1,7 @@
 # CoffeeScript Style Guide
 
+# DRAFT
+
 This guide presents a collection of best-practices and coding conventions for the [CoffeeScript][coffeescript] programming language.
 
 This guide is intended to be community-driven, and contributions are highly encouraged.
@@ -243,46 +245,50 @@ In cases where method calls are being chained and the code does not fit on a sin
   .reduce((x, y) -> x + y)
 ```
 
-When calling functions, choose to omit or include parentheses in such a way that optimizes for readability. Keeping in mind that "readability" can be subjective, the following examples demonstrate cases where parentheses have been omitted or included in a manner that the community deems to be optimal:
+When calling functions, _always_ use parentheses for function calls used within an expression:
 
 ```coffeescript
+# Yes
+
+obj.push Math.sin(x)
+
+print inspect(value)
+
+return obj.value(10, 20) / obj.value(20, 10)
+
+obj = new Tag(new Value(a, b), new Arg(c))
+
+```
+
+When calling functions, _only_ (and optionally) omit parenthesis if there is one and only one function call in the statement:
+
+```coffeescript
+# Yes
+
 baz 12
 
-brush.ellipse x: 10, y: 20 # Braces can also be omitted or included for readability
+log.debug "A message"
 
-foo(4).bar(8)
+@emit "connected"
 
-obj.value(10, 20) / obj.value(20, 10)
+# No
 
 print inspect value
 
-new Tag(new Value(a, b), new Arg(c))
 ```
 
-You will sometimes see parentheses used to group functions (instead of being used to group function parameters). Examples of using this style (hereafter referred to as the "function grouping style"):
+When chaining function calls, _always_ use parenthesis rather than function grouping style:
 
 ```coffeescript
-($ '#selektor').addClass 'klass'
+# Yes
 
-(foo 4).bar 8
+$('#blah').addClass('klass')
+
+# No
+
+(($ '#blah).addClass 'klass').doThis 'withThat'
+
 ```
-
-This is in contrast to:
-
-```coffeescript
-$('#selektor').addClass 'klass'
-
-foo(4).bar 8
-```
-
-In cases where method calls are being chained, some adopters of this style prefer to use function grouping for the initial call only:
-
-```coffeescript
-($ '#selektor').addClass('klass').hide() # Initial call only
-(($ '#selektor').addClass 'klass').hide() # All calls
-```
-
-The function grouping style is not recommended. However, **if the function grouping style is adopted for a particular project, be consistent with its usage.**
 
 <a name="strings"/>
 ## Strings
