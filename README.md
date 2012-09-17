@@ -2,7 +2,8 @@
 
 # DRAFT
 
-This guide presents a collection of best-practices and coding conventions for the [CoffeeScript][coffeescript] programming language.
+This guide presents a collection of best-practices and coding conventions for the [CoffeeScript][coffeescript] programming language 
+with respect to it's use with **node.js**.
 
 This guide is intended to be community-driven, and contributions are highly encouraged.
 
@@ -245,7 +246,7 @@ In cases where method calls are being chained and the code does not fit on a sin
   .reduce((x, y) -> x + y)
 ```
 
-When calling functions, _always_ use parentheses for function calls used within an expression:
+When calling functions, _always_ use parentheses for function calls used within an expression or as arguments:
 
 ```coffeescript
 # Yes
@@ -287,6 +288,18 @@ $('#blah').addClass('klass')
 # No
 
 (($ '#blah).addClass 'klass').doThis 'withThat'
+
+```
+
+When calling functions with a single callback as the last parameter, omit parenthesis:
+
+```coffeescript
+
+obj.on 'connected', (err, result) ->
+  print 'connected'
+  
+db.connect 'user', 'password', (err, db) -?
+  # use database
 
 ```
 
