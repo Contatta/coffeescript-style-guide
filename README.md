@@ -269,7 +269,7 @@ baz 12
 
 log.debug "A message"
 
-@emit "connected"
+@emit 'connected'
 
 # No
 
@@ -310,6 +310,8 @@ Use string interpolation instead of string concatenation:
 ```
 
 Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unless features like string interpolation are being used for the given string.
+
+Examples for single quotes include event names and keyword strings, that do not utilize interpolation.
 
 <a name="conditionals"/>
 ## Conditionals
